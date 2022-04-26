@@ -9,6 +9,8 @@ import LoginScreen from '../screens/Login/Index';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import DashBoard from '../screens/dashboard/Index'
 import CategoryScreen from '../screens/category/Index'
+import ProductDetail from './../screens/productDetail/Index';
+import CategoryProduct from '../screens/categoryProduct/Index';
 
 
 const Stack = createStackNavigator();
@@ -19,7 +21,7 @@ function AuthStack() {
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid,
       }}
       initialRouteName={'SignUpScreen'}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -29,20 +31,23 @@ function AuthStack() {
   );
 }
 
+
+
+
 function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="CategoryScreen"
+        initialRouteName="DashBoard"
         screenOptions={{headerShown: false,
           gestureEnabled: false,
-          cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
-   
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
         }}>
         <Stack.Screen name="Auth" component={AuthStack} />
         <Stack.Screen name='DashBoard' component={DashBoard} />
         <Stack.Screen name='CategoryScreen' component={CategoryScreen} />
-
+        <Stack.Screen name='CategoryProduct' component={CategoryProduct} />
+        <Stack.Screen name='ProductDetail' component={ProductDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

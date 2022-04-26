@@ -4,45 +4,45 @@ import {theme} from './../../theme/applicationStyle';
 import HeaderWithText from './../../components/HeaderWithText';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {images} from './../../theme/images';
-import { ActivityIndicator } from 'react-native-paper';
+import {ActivityIndicator} from 'react-native-paper';
 
 const CategoryScreen = ({navigation, listCategory}) => {
   const [categoryList, setCategoryList] = React.useState(null);
-   const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
- async function getCategory() {
-   setLoading(true)
-   let response = await listCategory();
-   console.log("response of category list===", response);
-   if(response.status ==200){
-     setLoading(false)
-     setTimeout(()=>{
-      setCategoryList(response?.data);
-     }, 500)
-   } else {
-     setLoading(false)
-     
-   }
- }
+  async function getCategory() {
+    setLoading(true);
+    let response = await listCategory();
+    if (response.status == 200) {
+      setLoading(false);
+      setTimeout(() => {
+        setCategoryList(response?.data);
+      }, 500);
+    } else {
+      setLoading(false);
+    }
+  }
 
-
- React.useEffect(()=>{
-   getCategory() 
- },[]) 
-
+  React.useEffect(() => {
+    getCategory();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <HeaderWithText title={'All Categories'} />
-      { loading && <ActivityIndicator  animating={loading}/>}
+      <HeaderWithText title={'All Categories'} navigation={navigation} />
+      {loading && <ActivityIndicator animating={loading} style={{alignSelf:'center', paddingVertical:10}} />}
       <View style={styles.paddingView}>
         <FlatList
           key={'1'}
           numColumns={3}
           data={categoryList}
           renderItem={({item}) => (
-            <TouchableOpacity onPress={()=> alert('product screen')} activeOpacity={0.7} style={styles.categoryContainer}>
-              <Image source={item?.attachement} style={styles.CategIocn} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('CategoryProduct', {categoryName: item?.name, category_id: item?.id } )}
+              activeOpacity={0.7}
+              style={styles.categoryContainer}>
+              {/* <Image source={ { uri: item?.attachement} } style={styles.CategIocn} /> */}
+              <Image source={images.APPLIANCES} style={styles.CategIocn} />
               <Text style={styles.name}>{item?.name}</Text>
             </TouchableOpacity>
           )}
@@ -66,15 +66,22 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     backgroundColor: theme.white,
-    elevation: 1,
+    elevation: 2,
     borderRadius: 4,
     width: 103,
     height: 103,
     marginHorizontal: 6,
     marginVertical: 6,
     justifyContent: 'space-between',
-    alignItems:'center',
-    paddingVertical:12
+    alignItems: 'center',
+    paddingVertical: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   name: {
     fontSize: 14,
@@ -86,5 +93,6 @@ const styles = StyleSheet.create({
   CategIocn: {
     width: 45,
     height: 45,
+    // backgroundColor:theme.grayText
   },
 });

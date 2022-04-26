@@ -529,6 +529,7 @@ attr popupMenuBackground
 attr popupMenuStyle
 attr popupTheme
 attr popupWindowStyle
+attr postSplashScreenTheme
 attr preserveIconSpacing
 attr pressedStateOverlayImage
 attr pressedTranslationZ
@@ -594,6 +595,7 @@ attr spanCount
 attr spinBars
 attr spinnerDropDownItemStyle
 attr spinnerStyle
+attr splashScreenIconSize
 attr splitTrack
 attr srcCompat
 attr stackFromEnd
@@ -743,6 +745,10 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr windowSplashScreenAnimatedIcon
+attr windowSplashScreenAnimationDuration
+attr windowSplashScreenBackground
+attr windowSplashScreenIconBackgroundColor
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
@@ -782,6 +788,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color bootsplash_background
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1289,6 +1296,13 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen splashscreen_icon_mask_size_no_background
+dimen splashscreen_icon_mask_size_with_background
+dimen splashscreen_icon_mask_stroke_no_background
+dimen splashscreen_icon_mask_stroke_with_background
+dimen splashscreen_icon_size
+dimen splashscreen_icon_size_no_background
+dimen splashscreen_icon_size_with_background
 dimen test_mtrl_calendar_day_cornerSize
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
@@ -1409,6 +1423,8 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable compat_splash_screen
+drawable compat_splash_screen_no_icon_background
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1426,6 +1442,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable icon_background
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1744,6 +1761,7 @@ id snap
 id snapMargins
 id spacer
 id special_effects_controller_view_tag
+id splashscreen_icon_view
 id split_action_bar
 id src_atop
 id src_in
@@ -1828,6 +1846,7 @@ integer app_bar_elevation_anim_duration
 integer bottom_sheet_slide_duration
 integer cancel_button_image_alpha
 integer config_tooltipAnimTime
+integer default_icon_animation_duration
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
 integer hide_password_duration
@@ -1903,7 +1922,6 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dev_loading_view
 layout fps_view
-layout launch_screen
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -1944,6 +1962,7 @@ layout redbox_view
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout splash_screen_view
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_design_checkbox
@@ -1965,6 +1984,7 @@ layout ucrop_layout_rotate_wheel
 layout ucrop_layout_scale_wheel
 layout ucrop_view
 menu ucrop_menu_activity
+mipmap bootsplash_logo
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -2220,6 +2240,9 @@ style Base_Theme_MaterialComponents_Light_Dialog_Bridge
 style Base_Theme_MaterialComponents_Light_Dialog_FixedSize
 style Base_Theme_MaterialComponents_Light_Dialog_MinWidth
 style Base_Theme_MaterialComponents_Light_DialogWhenLarge
+style Base_Theme_SplashScreen
+style Base_Theme_SplashScreen_DayNight
+style Base_Theme_SplashScreen_Light
 style Base_ThemeOverlay_AppCompat
 style Base_ThemeOverlay_AppCompat_ActionBar
 style Base_ThemeOverlay_AppCompat_Dark
@@ -2333,6 +2356,10 @@ style Base_Widget_MaterialComponents_PopupMenu_Overflow
 style Base_Widget_MaterialComponents_TextInputEditText
 style Base_Widget_MaterialComponents_TextInputLayout
 style Base_Widget_MaterialComponents_TextView
+style Base_v21_Theme_SplashScreen
+style Base_v21_Theme_SplashScreen_Light
+style Base_v27_Theme_SplashScreen
+style Base_v27_Theme_SplashScreen_Light
 style CalendarDatePickerDialog
 style CalendarDatePickerStyle
 style CardView
@@ -2404,9 +2431,6 @@ style ShapeAppearanceOverlay_TopLeftCut
 style ShapeAppearanceOverlay_TopRightDifferentCornerSize
 style SpinnerDatePickerDialog
 style SpinnerDatePickerStyle
-style SplashScreen_Fullscreen
-style SplashScreen_SplashAnimation
-style SplashScreen_SplashTheme
 style Test_ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day
 style Test_Theme_MaterialComponents_MaterialCalendar
 style Test_Widget_MaterialComponents_MaterialCalendar
@@ -2583,6 +2607,9 @@ style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
 style Theme_ReactNative_AppCompat_Light
 style Theme_ReactNative_AppCompat_Light_NoActionBar_FullScreen
+style Theme_SplashScreen
+style Theme_SplashScreen_Common
+style Theme_SplashScreen_IconBackground
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark

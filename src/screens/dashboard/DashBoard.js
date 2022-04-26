@@ -4,7 +4,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  FlatList
+  FlatList,
 } from 'react-native';
 import React from 'react';
 import {theme} from './../../theme/applicationStyle';
@@ -12,7 +12,7 @@ import AppHeader from './../../components/AppHeader';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as Icons from 'react-native-vector-icons/MaterialIcons';
 import BundleOfferCard from './../../components/View/BundleOfferCard';
-import { images } from './../../theme/images';
+import {images} from './../../theme/images';
 
 function Card({navigation, route, icon, backgroundColor, color, text1, text2}) {
   return (
@@ -25,33 +25,24 @@ function Card({navigation, route, icon, backgroundColor, color, text1, text2}) {
   );
 }
 
-const DashBoard = ({navigation}) => {
-  const [BunderOffer, setBunderOffer] = React.useState([
-    {
-      id: 1,
-      title: 'Cooking Essentials',
-      bundleImage: images.COOKING,
-      price: 560,
-    },
-    {
-      id: 2,
-      title: 'Fruits & vegetable mix',
-      bundleImage: images.FRUIT,
-      price: 560,
-    },
-    {
-      id: 3,
-      title: 'Fruits & vegetable mix',
-      bundleImage: images.FRUIT,
-      price: 500,
-    },
-    {
-      id: 4,
-      title: 'Fruits & vegetable mix',
-      bundleImage: images.FRUIT,
-      price: 530,
-    },
-  ]);
+const DashBoard = ({navigation, listProduct}) => {
+  const [newArrivalProduct, setNewArrivalProduct] = React.useState(null);
+
+  async function getProduct() {
+    let response = await listProduct();
+    if (response?.status == 200) {
+      setNewArrivalProduct(response?.data.list);
+    } else if (response?.data.status == 500) {
+      alert('Unable to reach to server, pull to refresh');
+    }
+  }
+
+  React.useEffect(() => {
+    getProduct();
+    () => {
+      return setNewArrivalProduct(null);
+    };
+  }, []);
   return (
     <View style={styles.container}>
       <AppHeader navivgation={navigation} />
@@ -79,19 +70,17 @@ const DashBoard = ({navigation}) => {
             route={'QuotationScreen'}
           />
         </ScrollView>
-        <View style={{paddingVertical: 20, paddingHorizontal:4}}>
+        <View style={{paddingVertical: 20, paddingHorizontal: 4}}>
           <Text style={[styles.slogan, {fontWeight: 'bold', top: 8}]}>
             {`New Arrival\n`}
           </Text>
           <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={BunderOffer}
-          renderItem={(item) => (
-            <BundleOfferCard {...item} />
-          )}
-          keyExtractor={(item, index) => String(item?.id + index)}
-        />
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={newArrivalProduct}
+            renderItem={item => <BundleOfferCard {...item} navigation={navigation} />}
+            keyExtractor={(item, index) => String(item?.id + index)}
+          />
         </View>
       </View>
     </View>
@@ -140,7 +129,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
   },
   iconStyles: {
-    fontSize: 30,
+    fontSize: 36,
     opacity: 2,
     alignSelf: 'center',
   },

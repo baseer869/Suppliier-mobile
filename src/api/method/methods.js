@@ -16,6 +16,29 @@ export  const listCategory = async (id, data) => {
 };
 
 
+export  const listProduct = async (id, data) => {
+  return Api(`${apiConstant.LIST_PRODUCT}`, 'GET',  );  
+};
+
+ 
+ export  const getProductDetail = async (id) => {
+  return Api(`${apiConstant.PRODUCT_DETAIL}/${id}`, 'GET', null,  null  );  
+ };
+
+
+
+ export  const getCategoryProduct = async (id) => {
+  return Api(`${apiConstant.LIST_PRODUCT_CATEGORY}?category_id=${id}`, 'GET', null,  null  );  
+ };
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 // export const login = data => {
 //   console.log('login data---', data);
 //   return Api(apiConstant.LOGIN, 'POST', data);
@@ -90,10 +113,6 @@ export  const listCategory = async (id, data) => {
 
 //  //
 
- 
-//  export  const getProductDetail = async (id) => {
-//    console.log('datattatatatatatat', id);
-//   return Api(`${apiConstant.PRODUCT_DETAIL}/${id}`, 'GET', null,  null  );  
-//  };
+
 
  

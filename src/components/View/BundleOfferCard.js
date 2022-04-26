@@ -3,26 +3,26 @@ import React from 'react';
 import {theme} from './../../theme/applicationStyle';
 import {images} from './../../theme/images';
 
-const BundleOfferCard = ({item}) => {
+const BundleOfferCard = ({item, navigation}) => {
   return (
-    <View style={styles.container}>
-      <Image source={item.bundleImage} style={styles.bundleImage} />
+    <TouchableOpacity onPress={()=> navigation.navigate('ProductDetail', { item: item  })} style={styles.container}>
+      <Image source={{uri: item?.attachment}} style={styles.bundleImage} />
       <View style={{paddingHorizontal: 4, paddingVertical: 4}}>
-        <Text style={styles.text}>{item.title}</Text>
+        <Text style={[styles.text, {fontWeight:'bold'}]} numberOfLines={1} >{item.name}</Text>
         <View style={styles.dire}>
           <Text
             style={[
               styles.text,
               {fontWeight: 'bold'},
-            ]}>{`Rs.${item.price}`}</Text>
+            ]}>{`Rs.${item.firstPrice}`}</Text>
           <View activeOpacity={0.7} style={styles.plusView}>
             <Text style={[styles.text, {paddingVertical: 4}]}>
-              {'1.0 Pieces (MOQ)'}
+              {`${item?.moq}.0 Pieces (MOQ)`}
             </Text>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     marginVertical: 4,
     alignSelf: 'center',
+    resizeMode:'cover'
   },
   plusView: {
     flexDirection: 'row',
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     fontFamily: theme.fontFamily,
     color: theme.textColor,
+    width:130
   },
   descr: {
     fontSize: 10,
