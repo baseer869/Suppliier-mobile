@@ -7,22 +7,24 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 import React from 'react';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import Header from '../../components/Header';
 import {theme} from './../../theme/applicationStyle';
 import {images} from './../../theme/images';
 import RelatedProductItem from '../../components/View/RelatedProductItem';
 import {ScrollView} from 'react-native-gesture-handler';
 import {text} from '../../theme/text';
-import Button from '../../components/button';
+import Button, {NewButton, NewButtonOutline} from '../../components/button';
 import HeaderWithText from '../../components/HeaderWithText';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const ProductDetail = (props, route) => {
   const colors = ['tomato', 'thistle', 'skyblue', 'teal'];
   let item = props.route?.params?.item;
-  console.log('user detail', props.userDetail);
   const [relatedProduct, setRelatedProduct] = React.useState([
     {
       id: 1,
@@ -53,14 +55,12 @@ const ProductDetail = (props, route) => {
   ]);
   const [quantity, setQuantity] = React.useState(null);
   const [ProductItem, setProductDetail] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
   async function getProductDetail() {
     let response = await props.getProductInfo(item.id);
-    console.log('product info', response);
     setProductDetail(response);
 
-    // let {id, shop_id, stock, price, unitType, discountedPrice, category_id} =
-    response;
     // let data = {
     //   id,
     //   shop_id,
@@ -95,18 +95,43 @@ const ProductDetail = (props, route) => {
   //   }
   // }
 
+  async function addToCart() {
+    setLoading(true);
+    let auth_token = await AsyncStorage.getItem('@storage_Key');
+    let data = {
+      userId: 3,
+      status: '1',
+      productId: ProductItem?.id,
+      firstPrice: ProductItem?.firstPrice,
+      quantity: 1,
+      token: auth_token
+      };
+    let response = await props.addItemToCart(data);
+    if (response.status == 200) {
+      ToastAndroid.show(
+        `Item ${ProductItem?.name.slice(0,15)}... added to cart.`,
+        ToastAndroid.SHORT,
+      );
+      setLoading(false)
+    } else if (response.status == 200 && response?.item.length == 1) {
+      ToastAndroid.show(
+        `Item ${ProductItem?.name.slice(0,15)}... added to cart.`,
+        ToastAndroid.SHORT,
+      );
+      setLoading(false)
+    } else if (response.status == 400) {
+      ToastAndroid.show(`SERVER ERROR, TRY AGAIN`, ToastAndroid.SHORT);
+      setLoading(false)
+    }
+  }
+
   React.useEffect(() => {
     getProductDetail();
   }, []);
 
-  //  function setCartItem() {
-  //    console.log('itemmmmmmm', item )
-
-  //  }
-
   return (
     <View style={styles.container}>
-      <HeaderWithText navigation={props.navigation} />
+      <HeaderWithText route={'CartScreen'} cart navigation={props.navigation} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{}}>
           <SwiperFlatList
@@ -146,36 +171,8 @@ const ProductDetail = (props, route) => {
               </Text>{' '}
             </Text>
           </View>
-          <View style={[styles.dir, {paddingTop: 12}]}>
-            {item?.unitType && (
-              <Text
-                style={styles.weight}>{`Weight: 330 ${'item?.unitType'}`}</Text>
-            )}
-            {quantity && quantity !== null && (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
-                <TouchableOpacity
-                  activeOpacity={0.5}
-                  onPress={() => alert('minus')}
-                  style={{paddingHorizontal: 10}}>
-                  <Image source={images.MINUS} style={styles.icon} />
-                </TouchableOpacity>
-                <Text style={styles.cartNumber}>{quantity}</Text>
-                <TouchableOpacity
-                  style={{paddingHorizontal: 10}}
-                  activeOpacity={0.5}
-                  onPress={() => updateCart()}>
-                  <Image source={images.PLUS} style={styles.icon} />
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
           <View style={{paddingTop: 25}}>
-            <Text style={styles.description}>Description</Text>
+            <Text style={styles.description}>Product Detail</Text>
             <Text
               style={styles.descdetail}>{`${ProductItem?.description}`}</Text>
           </View>
@@ -194,11 +191,20 @@ const ProductDetail = (props, route) => {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.btn}>
-        <Button
-          title={'Add to Cart'}
-          onButtonPress={() => props.navigation.navigate('CartScreen')}
-        />
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View style={styles.btn}>
+          <NewButtonOutline
+            title={'Send inquiry'}
+            onButtonPress={() => props.navigation.navigate('CartScreen')}
+          />
+        </View>
+        <View style={[styles.btn, {width: '45%'}]}>
+          <NewButton
+            disable={loading}
+            title={'Add to Cart'}
+            onButtonPress={() => addToCart()}
+          />
+        </View>
       </View>
     </View>
   );
@@ -221,19 +227,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginHorizontal: 14,
     paddingVertical: 8,
+    width: '32%',
   },
   innerContainer: {
     flex: 1,
-    // borderTopLeftRadius: 20,
-    // borderTopRightRadius: 20,
     paddingTop: 10,
     paddingHorizontal: 14,
     paddingTop: 30,
-    //   shadowColor: theme.textAccent,
-    //   shadowOffset: {width: 0, height: 0.8},
-    //   shadowOpacity: 0.5,
-    //   shadowRadius: 8,
-    //   elevation: 1,
   },
   description: {
     fontSize: 16,

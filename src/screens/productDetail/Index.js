@@ -20,7 +20,7 @@ const Index = (props) => {
  const mapDispatcToProps = (dispatch) =>{
     return {
       getProductInfo : (id) => dispatch(getProductDetailActionHandler(id)),
-      // addToCart: (data) => dispatch(addToCartActionhandler(data))
+      addItemToCart: (data) => dispatch(addToCartActionhandler(data))
     }
   }
 export default connect(mapStateToProps, mapDispatcToProps)(Index)

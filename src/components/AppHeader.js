@@ -7,9 +7,7 @@ import {images} from './../theme/images';
 const AppHeader = ({navigation}) => {
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={() => navigation.openDrawer()}>
-        <Image source={images.MENU} style={styles.menu} />
-      </TouchableOpacity>
+        <Image source={images.APP_LOGO} style={styles.menu} />
       <View style={{paddingRight: 70}}>
         <Text style={styles.text}>{text.deliverTo}</Text>
         <View style={styles.addressContainer}>
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     width: 34,
     alignSelf: 'center',
     top: 2,
-    resizeMode: 'contain',
+    tintColor:theme.primary,
   },
   menuContainer: {
     marginHorizontal: 15,

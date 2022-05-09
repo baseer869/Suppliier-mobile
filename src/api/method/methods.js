@@ -33,16 +33,39 @@ export  const listProduct = async (id, data) => {
 
 
 
+ export const login = data => {
+  console.log('login data---', data);
+  return Api(apiConstant.LOGIN, 'POST', data);
+};
+
+
+export  const addItemToCart = async (data) => {
+ let token = data.token;
+ delete data.token;
+ return Api(`${apiConstant.ADD_UPDATE_CART}`, 'POST', data,  `${String(token)}`  );  
+};
+
+
+export  const listCart = async (data) => {
+  let token = data.token;
+  delete data.token;
+   return Api(`${apiConstant.LIST_CART}/${data?.id}`, 'GET', null,  `${String(token)}`  );  
+ };
+
+
+
+
+
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-// export const login = data => {
-//   console.log('login data---', data);
-//   return Api(apiConstant.LOGIN, 'POST', data);
-// };
+
 
 
 // export const loadCagetory = data => {
@@ -90,11 +113,7 @@ export  const listProduct = async (id, data) => {
 //   return Api(`${apiConstant.LIST_CHOICE_PRODUCT}/?id=${'2'}`, 'GET',  );  
 // };
 
-// export  const addItemToCart = async (data) => {
-//  let token = data.token;
-//  delete data.token;
-//  return Api(`${apiConstant.ADD_UPDATE_CART}`, 'POST', data,  `${String(token)}`  );  
-// };
+
 
 // export  const removeFromCart = async (data) => {
 //   console.log('item to be removed datat==', data);
@@ -104,11 +123,7 @@ export  const listProduct = async (id, data) => {
 //  };
  
  
-// export  const listCart = async (data) => {
-//   let token = data.token;
-//   delete data.token;
-//   return Api(`${apiConstant.LIST_CART}/${data?.id}`, 'GET', null,  `${String(token)}`  );  
-//  };
+
  
 
 //  //

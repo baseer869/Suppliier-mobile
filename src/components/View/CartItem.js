@@ -53,8 +53,7 @@ const CartItem = item => {
         <Text numberOfLines={2} style={styles.title}>
           {name}
         </Text>
-        <Text style={styles.unit}>{`33 ${unitType}`}</Text>
-        <Text style={styles.shopName}>{`${item?.shops.name}`}</Text>
+        {/* <Text style={styles.unit}>{`33 ${unitType}`}</Text> */}
       </View>
       <Text style={styles.price}>{`Rs.${totalPrice}`}</Text>
       <View style={styles.cartContainer}>

@@ -19,6 +19,7 @@ MERGED from [:react-native-image-crop-picker] G:\circle\myApp\Suppliier\node_mod
 MERGED from [:react-native-image-picker] G:\circle\myApp\Suppliier\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:react-native-safe-area-context] G:\circle\myApp\Suppliier\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] G:\circle\myApp\Suppliier\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-splash-screen] G:\circle\myApp\Suppliier\node_modules\react-native-splash-screen\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] G:\circle\myApp\Suppliier\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.65.2] C:\Users\hp\.gradle\caches\transforms-3\dd918508f1573830b3284dfdebcbda0b\transformed\jetified-react-native-0.65.2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.fresco:flipper:2.5.0] C:\Users\hp\.gradle\caches\transforms-3\705daa35cfc508d545884e16a9ae76fc\transformed\jetified-flipper-2.5.0\AndroidManifest.xml:2:1-9:12
@@ -204,6 +205,8 @@ MERGED from [:react-native-safe-area-context] G:\circle\myApp\Suppliier\node_mod
 MERGED from [:react-native-safe-area-context] G:\circle\myApp\Suppliier\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] G:\circle\myApp\Suppliier\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] G:\circle\myApp\Suppliier\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-splash-screen] G:\circle\myApp\Suppliier\node_modules\react-native-splash-screen\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-splash-screen] G:\circle\myApp\Suppliier\node_modules\react-native-splash-screen\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] G:\circle\myApp\Suppliier\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] G:\circle\myApp\Suppliier\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.65.2] C:\Users\hp\.gradle\caches\transforms-3\dd918508f1573830b3284dfdebcbda0b\transformed\jetified-react-native-0.65.2\AndroidManifest.xml:5:5-7:41

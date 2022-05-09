@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 import React from 'react';
 import {theme} from './../theme/applicationStyle';
 import {images} from './../theme/images';
@@ -10,13 +10,7 @@ const button = ({icon, textSize, title, onButtonPress}) => {
       activeOpacity={0.7}
       style={styles.button}
       onPress={() => onButtonPress('login')}>
-      <Text
-        style={[
-          !textSize ? styles.btnText : styles.btnText,
-          {fontSize: textSize},
-        ]}>
-        {title}
-      </Text>
+      <Text style={styles.btnText}>{title}</Text>
       {icon && <Image source={images.ARROW_RIGHT} style={styles.arrow} />}
     </TouchableOpacity>
   );
@@ -32,33 +26,35 @@ export const SecondaryButton = ({textSize, title, onButtonPress}) => {
   );
 };
 
-export const NewButton = ({icon, textSize, title, onButtonPress}) => {
+export const NewButton = ({ icon,disable, textSize, title, onButtonPress}) => {
   return (
-    <TouchableOpacity
-    onPress={()=> onButtonPress()}
-    activeOpacity={0.7}
-    >
-
-    <LinearGradient
-    start={{x: 0, y: 0}} end={{x: 1, y: 0}}
-      colors={[ '#DD2476', theme.primary, ]}
-      style={styles.button}>
-        <Text
-        style={[
-          !textSize ? styles.btnText : styles.btnText,
-          {fontSize: textSize},
-        ]}>
-        {title}
-      </Text>
-      {icon && <Image source={images.ARROW_RIGHT} style={styles.arrow} />}
-
-    </LinearGradient>
+    <TouchableOpacity disabled={disable} onPress={() => onButtonPress()} activeOpacity={0.7}>
+        <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#DD2476', theme.primary]}
+        style={styles.button}>
+          <Text style={[styles.btnText, {color: theme.white}]}>{title}</Text>
+        {icon && <Image source={images.ARROW_RIGHT} style={styles.arrow} />}
+        { disable  &&  <ActivityIndicator animating={disable} color={'#fff'} size={25} />}
+      </LinearGradient> 
     </TouchableOpacity>
-
   );
 };
 
-// 
+export const NewButtonOutline = ({icon, textSize, title, onButtonPress}) => {
+  return (
+    <TouchableOpacity
+      style={styles.buttonOutline}
+      onPress={() => onButtonPress()}
+      activeOpacity={0.7}>
+      <Text style={[styles.btnText, {color: theme.primary}]}>{title}</Text>
+      {icon && <Image source={images.ARROW_RIGHT} style={styles.arrow} />}
+    </TouchableOpacity>
+  );
+};
+
+//
 
 // .btn-grad {background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%)}
 // .btn-grad {
@@ -68,7 +64,7 @@ export const NewButton = ({icon, textSize, title, onButtonPress}) => {
 //    text-transform: uppercase;
 //    transition: 0.5s;
 //    background-size: 200% auto;
-//    color: white;            
+//    color: white;
 //    box-shadow: 0 0 20px #eee;
 //    border-radius: 10px;
 //    display: block;
@@ -80,10 +76,7 @@ export const NewButton = ({icon, textSize, title, onButtonPress}) => {
 //    text-decoration: none;
 //  }
 
-
-
-// 
-
+//
 
 export default button;
 
@@ -95,6 +88,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 3,
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: theme.primary,
+  },
+
+  buttonOutline: {
+    height: 45,
+    justifyContent: 'center',
+    borderRadius: 8,
+    paddingHorizontal: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: theme.primary,
+    borderWidth: 0.5,
   },
   arrow: {width: 7.67, height: 13.05, left: 4, resizeMode: 'contain'},
   button2: {
@@ -106,7 +111,6 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 16,
-    color: theme.white,
     fontWeight: 'bold',
     lineHeight: 18,
     letterSpacing: 0.4,

@@ -102,6 +102,72 @@ export const listProductActionHandler = data => dispatch => {
   };
 
 
+export const addToCartActionhandler = data => dispatch => {
+  // dispatch({type: LOADER});
+  return new Promise(async function (resolve) {
+    addItemToCart(data)
+      .then(response => {
+        if (response.status === 200) {
+          let item = response;
+          console.log('is item added to cart', response);
+          payload = data;
+          // dispatch({type: 'ADD', payload});
+          return resolve(item);
+        } else if (response.status === 400) {
+          setTimeout(() => {
+            dispatch({type: LOADER});
+            let detail = {
+              message: 'SERVER ERROR !',
+              info: 'danger',
+            };
+            AppMessage(detail); //info message
+          }, 500);
+        }
+        return resolve(response);
+      })
+      .catch(error => {
+        return resolve(error);
+      });
+  });
+};
+
+
+export const listCartActionHandler = data => dispatch => {
+  dispatch({type: LOADER});
+  return new Promise(async function (resolve) {
+    listCart(data)
+      .then(response => {
+        if (response.status === 200) {
+          // let payload = {};
+          let payload = response?.data;
+          payload.totalAmount = response?.data.amount;
+          payload.shippingCharges = response?.data.shippingFee;
+          setTimeout(() => {
+            dispatch({type: ADD_ITEM_TO_CART, payload});
+          }, 800);
+          let item = response;
+          return resolve(item);
+        } else if (response.status === 400) {
+          setTimeout(() => {
+            dispatch({type: LOADER});
+            let detail = {
+              message: 'SERVER ERROR !',
+              info: 'danger',
+            };
+            AppMessage(detail); //info message
+          }, 500);
+        }
+        return resolve(response);
+      })
+      .catch(() => {
+        return resolve(false);
+      });
+  });
+};
+
+
+
+
 // //////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -396,34 +462,6 @@ export const listProductActionHandler = data => dispatch => {
 //   });
 // };
 
-// export const addToCartActionhandler = data => dispatch => {
-//   dispatch({type: LOADER});
-//   return new Promise(async function (resolve) {
-//     addItemToCart(data)
-//       .then(response => {
-//         if (response.status === 200) {
-//           let item = response;
-//           console.log('is item added to cart', response);
-//           payload = data;
-//           dispatch({type: 'ADD', payload});
-//           return resolve(item);
-//         } else if (response.status === 400) {
-//           setTimeout(() => {
-//             dispatch({type: LOADER});
-//             let detail = {
-//               message: 'SERVER ERROR !',
-//               info: 'danger',
-//             };
-//             AppMessage(detail); //info message
-//           }, 500);
-//         }
-//         return resolve(response);
-//       })
-//       .catch(error => {
-//         return resolve(error);
-//       });
-//   });
-// };
 
 // //
 

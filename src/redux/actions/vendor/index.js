@@ -21,7 +21,7 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 import { AppMessage } from '../../../methods/AppMessage';
 
 
-// LOGIN
+// SIGN UP
 export const signUpActionHandler = data => dispatch => {
   return new Promise(async function (resolve) {
     signUp(data)
@@ -38,20 +38,20 @@ export const signUpActionHandler = data => dispatch => {
 };
 
 
-// // LOGIN
-// export const loginActionHandler = data => dispatch => {
-//   return new Promise(async function (resolve) {
-//     login(data)
-//       .then(response => {
-//         const payload = response.category;
-//         //   dispatch({type: GET_PRODUCT_CATEGORY, payload})
-//         return resolve(response);
-//       })
-//       .catch(() => {
-//         return resolve(false);
-//       });
-//   });
-// };
+// LOGIN
+export const loginActionHandler = data => dispatch => {
+  return new Promise(async function (resolve) {
+    login(data)
+      .then(response => {
+        const payload = response.category;
+        //   dispatch({type: GET_PRODUCT_CATEGORY, payload})
+        return resolve(response);
+      })
+      .catch(() => {
+        return resolve(false);
+      });
+  });
+};
 
 // export const loadCategoryActionHandler = data => dispatch => {
 //   return new Promise(async function (resolve) {

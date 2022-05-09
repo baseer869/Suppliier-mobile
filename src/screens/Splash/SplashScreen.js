@@ -2,12 +2,20 @@ import {StyleSheet, Text, View, StatusBar, Image} from 'react-native';
 import React, {useEffect} from 'react';
 import {theme} from './../../theme/applicationStyle';
 import {images} from './../../theme/images';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SplashScreen = ({navigation}) => {
+  async function getUserInfo() {
+    let auth_token = await AsyncStorage.getItem('@storage_Key');
+    if (auth_token) {
+      navigation.replace('DashBoard');
+    } else if (auth_token == undefined || auth_token == null) {
+      navigation.replace('LoginScreen');
+    }
+  }
+
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('LoginScreen');
-    }, 500);
+    getUserInfo();
   });
 
   return (

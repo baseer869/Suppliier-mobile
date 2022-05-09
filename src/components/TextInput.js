@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   NewInput:{
     borderWidth: 0.2,
-    borderColor: theme.black,
+    borderColor: theme.grayText,
     borderRadius: 2,
     height: 45,
     backgroundColor: theme.inputColor

@@ -2,6 +2,7 @@ import { Platform } from "react-native";
 
 // const baseUrl = "";
 export const baseUrl = 'https://suppliier-new-staging-app.herokuapp.com/cir/api/v1'
+// export const baseUrl  = "http://192.168.43.10:3000/cir/api/v1"
 // const baseUrl = 'http://6356-115-186-157-115.ngrok.io/api/v1';
 // http://localhost:3000/cir/api/v1
 

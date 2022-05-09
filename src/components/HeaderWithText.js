@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {images} from './../theme/images';
 import {theme} from './../theme/applicationStyle';
+import  Icon  from 'react-native-vector-icons/AntDesign';
 
 const HeaderWithText = ({cart,cartTotal, title, text, navigation, route}) => {
   return (
@@ -20,9 +21,10 @@ const HeaderWithText = ({cart,cartTotal, title, text, navigation, route}) => {
           onPress={() =>
             route ? navigation.navigate(route) : navigation.goBack()
           }>
-          <Image
-            source={images.CART}
-            style={[styles.cart, {tintColor: theme.primary}]}
+          <Icon
+            name={'shoppingcart'}
+            size={24}
+            color={theme.primary}
           />
         </TouchableOpacity>
       ) : (
