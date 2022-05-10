@@ -99,7 +99,6 @@ const ProductDetail = (props, route) => {
     setLoading(true);
     let auth_token = await AsyncStorage.getItem('@storage_Key');
     let data = {
-      userId: 3,
       status: '1',
       productId: ProductItem?.id,
       firstPrice: ProductItem?.firstPrice,

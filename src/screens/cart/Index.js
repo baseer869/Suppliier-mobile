@@ -25,8 +25,8 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>{
   return {
     listCart : (id) =>  dispatch(listCartActionHandler(id)),
-    // addToCart: (data) =>dispatch(addToCartActionhandler(data)),
-    // removeFromCart: (data) =>dispatch(removeFromCartActionhandler(data)),
+    addToCart: (data) =>dispatch(addToCartActionhandler(data)),
+    removeFromCart: (data) =>dispatch(removeFromCartActionhandler(data)),
 
   }
 }

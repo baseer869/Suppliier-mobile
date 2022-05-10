@@ -35,8 +35,8 @@ export default (state = initialState, action) => {
       );
       const newArray = [...state.cartList];
       newArray[index].quantity += 1;
-      newArray[index].totalPrice += action.payload.price;
-      state.totalAmount += action.payload.price;
+      newArray[index].totalPrice += action.payload.firstPrice;
+      state.totalAmount += action.payload.firstPrice;
 
       return {
         ...state, //copying the orignal state
@@ -57,12 +57,12 @@ export default (state = initialState, action) => {
       if (cart[Index].quantity < 2 || cart[Index].quantity == 1) {
         console.log('loggggg')
         delete cart[Index];
-        state.totalAmount -= action.payload.price;
+        state.totalAmount -= action.payload.firstPrice;
 
       } else {
         cart[Index].quantity -= 1;
-        cart[Index].totalPrice -= action.payload.price;
-        state.totalAmount -= action.payload.price;
+        cart[Index].totalPrice -= action.payload.firstPrice;
+        state.totalAmount -= action.payload.firstPrice;
       }
       return {
         ...state, //copying the orignal state

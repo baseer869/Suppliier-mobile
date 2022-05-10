@@ -103,13 +103,12 @@ export const listProductActionHandler = data => dispatch => {
 
 
 export const addToCartActionhandler = data => dispatch => {
-  // dispatch({type: LOADER});
+  dispatch({type: LOADER});
   return new Promise(async function (resolve) {
     addItemToCart(data)
       .then(response => {
         if (response.status === 200) {
           let item = response;
-          console.log('is item added to cart', response);
           payload = data;
           // dispatch({type: 'ADD', payload});
           return resolve(item);
@@ -165,6 +164,33 @@ export const listCartActionHandler = data => dispatch => {
   });
 };
 
+export const removeFromCartActionhandler = data => dispatch => {
+  dispatch({type: 'REMOVE_LOADER'});
+  return new Promise(async function (resolve) {
+    removeFromCart(data)
+      .then(response => {
+        if (response.status === 200) {
+          console.log('is item remove from cart', response);
+          payload = data;
+          dispatch({type: 'REMOVE_ITEM_FROM_CART', payload});
+          return resolve(200);
+        } else if (response.status === 400) {
+          setTimeout(() => {
+            dispatch({type: 'REMOVE_LOADER'});
+            let detail = {
+              message: 'SERVER ERROR !',
+              info: 'danger',
+            };
+            AppMessage(detail); //info message
+          }, 500);
+        }
+        return resolve(response);
+      })
+      .catch(error => {
+        return resolve(error);
+      });
+  });
+};
 
 
 
@@ -465,33 +491,6 @@ export const listCartActionHandler = data => dispatch => {
 
 // //
 
-// export const removeFromCartActionhandler = data => dispatch => {
-//   dispatch({type: 'REMOVE_LOADER'});
-//   return new Promise(async function (resolve) {
-//     removeFromCart(data)
-//       .then(response => {
-//         if (response.status === 200) {
-//           console.log('is item remove from cart', response);
-//           payload = data;
-//           dispatch({type: 'REMOVE_ITEM_FROM_CART', payload});
-//           return resolve(200);
-//         } else if (response.status === 400) {
-//           setTimeout(() => {
-//             dispatch({type: 'REMOVE_LOADER'});
-//             let detail = {
-//               message: 'SERVER ERROR !',
-//               info: 'danger',
-//             };
-//             AppMessage(detail); //info message
-//           }, 500);
-//         }
-//         return resolve(response);
-//       })
-//       .catch(error => {
-//         return resolve(error);
-//       });
-//   });
-// };
 
 // //
 

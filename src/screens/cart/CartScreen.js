@@ -42,8 +42,9 @@ const CartScreen = ({
 
   // ADD TO CART
   async function addItemToCart(data) {
-    data.token = userDetail?.token;
-    if (userDetail.token) {
+    let auth_token = await AsyncStorage.getItem('@storage_Key');
+     data.token = auth_token;
+    if (auth_token) {
       let response = await addToCart(data);
       console.log('response of cart item', response);
     } else {
@@ -53,8 +54,9 @@ const CartScreen = ({
 
   // REMOVE FROM CART
   async function setItemToRemoveFromCart(data) {
-    data.token = userDetail?.token;
-    if (userDetail.token) {
+    let auth_token = await AsyncStorage.getItem('@storage_Key');
+     data.token = auth_token;
+    if (auth_token) {
       let response = await removeFromCart(data);
       console.log('item removed fromcartssss--->', response);
     } else {

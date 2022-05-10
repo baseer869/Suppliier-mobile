@@ -18,12 +18,13 @@ import {theme} from '../theme/applicationStyle';
 import {images} from './../theme/images';
 import ProfileScreen from './../screens/profile/Index';
 import History from './../screens/history/Index';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 
 const styles = StyleSheet.create({
   image: {
     width: 20,
     height: 20,
-    resizeMode: 'contain',
   },
   bagContainer: {
     width: 52,
@@ -108,6 +109,38 @@ function Tabs() {
         }}
         name="DashBoardScreen"
         component={DashBoard}
+      />
+      <Tab.Screen
+        name="CartScreen"
+        options={{
+          tabBarLabel: ({color, focused}) => {
+            return (
+              <Text
+                style={
+                  focused
+                    ? styles.tabBarLabel
+                    : [styles.tabBarLabel, {color: theme.inactive}]
+                }>
+                {'Cart'}{' '}
+              </Text>
+            );
+          },
+
+          tabBarIcon: ({color, focused}) => {
+            return (
+              <Icon
+                size={24}
+                name='cart-outline'
+                style={
+                  focused
+                    ? [ {color: theme.active}]
+                    : [ {color: theme.inactive}]
+                }
+              />
+            );
+          },
+        }}
+        component={CartScreen}
       />
        <Tab.Screen
         name="History"

@@ -13,7 +13,6 @@ MERGED from [:react-native-async-storage_async-storage] G:\circle\myApp\Suppliie
 MERGED from [:react-native-community_netinfo] G:\circle\myApp\Suppliier\node_modules\@react-native-community\netinfo\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-masked-view_masked-view] G:\circle\myApp\Suppliier\node_modules\@react-native-masked-view\masked-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-bootsplash] G:\circle\myApp\Suppliier\node_modules\react-native-bootsplash\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-geocoder] G:\circle\myApp\Suppliier\node_modules\react-native-geocoder\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] G:\circle\myApp\Suppliier\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-image-crop-picker] G:\circle\myApp\Suppliier\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-33:12
 MERGED from [:react-native-image-picker] G:\circle\myApp\Suppliier\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
@@ -193,8 +192,6 @@ MERGED from [:react-native-masked-view_masked-view] G:\circle\myApp\Suppliier\no
 MERGED from [:react-native-masked-view_masked-view] G:\circle\myApp\Suppliier\node_modules\@react-native-masked-view\masked-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-bootsplash] G:\circle\myApp\Suppliier\node_modules\react-native-bootsplash\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-bootsplash] G:\circle\myApp\Suppliier\node_modules\react-native-bootsplash\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-geocoder] G:\circle\myApp\Suppliier\node_modules\react-native-geocoder\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-geocoder] G:\circle\myApp\Suppliier\node_modules\react-native-geocoder\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] G:\circle\myApp\Suppliier\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] G:\circle\myApp\Suppliier\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-image-crop-picker] G:\circle\myApp\Suppliier\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

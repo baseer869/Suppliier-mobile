@@ -19,7 +19,7 @@ const LoginScreen = ({navigation, login}) => {
       alert('Password is required !');
     }
     let data = {
-      email: '1@gmail.com',
+      email: 'admin@gmail.com',
       password: '123123',
     };
     let response = await login(data);

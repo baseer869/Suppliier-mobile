@@ -49,11 +49,16 @@ export  const addItemToCart = async (data) => {
 export  const listCart = async (data) => {
   let token = data.token;
   delete data.token;
-   return Api(`${apiConstant.LIST_CART}/${data?.id}`, 'GET', null,  `${String(token)}`  );  
+   return Api(`${apiConstant.LIST_CART}`, 'GET', null,  `${String(token)}`  );  
  };
 
 
 
+export  const removeFromCart = async (data) => {
+  let token = data.token;
+  delete data.token;
+  return Api(`${apiConstant.REMOVE_FROM_CART}/${data.id}`, 'POST', data,  `${String(token)}`  );  
+ };
 
 
 
@@ -115,12 +120,6 @@ export  const listCart = async (data) => {
 
 
 
-// export  const removeFromCart = async (data) => {
-//   console.log('item to be removed datat==', data);
-//   let token = data.token;
-//   delete data.token;
-//   return Api(`${apiConstant.REMOVE_FROM_CART}/${data.id}`, 'POST', data,  `${String(token)}`  );  
-//  };
  
  
 

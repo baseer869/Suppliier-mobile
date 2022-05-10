@@ -16,7 +16,6 @@ const ProfileScreen = ({navigation}) => {
   }
   async function getProfileInfo() {
     let info = await AsyncStorage.getItem('@user_info');
-    console.log('info---', info);
     setProfileDetail(JSON.parse(info));
   }
 

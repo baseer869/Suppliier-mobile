@@ -18,26 +18,24 @@ const CartItem = item => {
     removeFromCart,
     removeLoader,
   } = item;
-  let {name, unitType, price , discountedPrice} = item?.products;
-
+  let {name,firstPrice , discountedPrice} = item?.products;
   function setItem() {
     let currentItem = {
-      userId: userId,
       status: '1',
       productId: productId,
-      shopId: shopId,
-      price: discountedPrice,
+      firstPrice: firstPrice,
       quantity: 1,
     };
+   
+
     setItemIndex(index);
     item.addItemToCart(currentItem);
   }
 
   function removeItem() {
     let currentItem = {
-      userId: userId,
       productId: productId,
-      price: discountedPrice,
+      firstPrice: firstPrice,
       id: id,
     };
     setItemIndex(index);
@@ -45,7 +43,7 @@ const CartItem = item => {
   }
 
   return (
-    <View key={String(index + 'abc')} style={styles.container}>
+    <View key={String(item?.product?.productId + 'abc')} style={styles.container}>
       <View style={styles.imageBack}>
         <Image source={item.image} style={styles.image} />
       </View>
@@ -114,8 +112,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   icon: {
-    height: 24,
-    width: 24,
+    height: 26,
+    width: 26,
     resizeMode: 'contain',
   },
   detailView: {

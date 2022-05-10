@@ -19,8 +19,6 @@ import com.reactnativecommunity.netinfo.NetInfoPackage;
 import org.reactnative.maskedview.RNCMaskedViewPackage;
 // react-native-bootsplash
 import com.zoontek.rnbootsplash.RNBootSplashPackage;
-// react-native-geocoder
-import com.devfd.RNGeocoder.RNGeocoderPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-image-crop-picker
@@ -88,7 +86,6 @@ public class PackageList {
       new NetInfoPackage(),
       new RNCMaskedViewPackage(),
       new RNBootSplashPackage(),
-      new RNGeocoderPackage(),
       new RNGestureHandlerPackage(),
       new PickerPackage(),
       new ImagePickerPackage(),
